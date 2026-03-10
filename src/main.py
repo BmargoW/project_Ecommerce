@@ -29,9 +29,10 @@ class Category:
         Category.product_count += len(self.products if products else [])
 
 
-if __name__ == "__main__": # pragma no cover
+if __name__ == "__main__":  # pragma no cover
     product1 = Product(
-        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера",
+        180000.0, 5
     )
 
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
