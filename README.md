@@ -9,7 +9,7 @@
 
 1. Клонируйте репозиторий:
 ```
-git clone https://github.com/BmargoW/project_Homework10.1
+git clone https://github.com/BmargoW/project_Ecommerce
 ```
 1. Установите зависимости:
 
