@@ -1,3 +1,4 @@
+
 import pytest
 from src.main import Product, Category
 
@@ -16,8 +17,8 @@ def category_1():
         "Смартфоны",
         "Смартфоны, как средство не только коммуникации,\
         но и получения дополнительных функций для удобства жизни",
-        ["product1", "product2", "product3"],
-    )
+        ["product1", "product2", "product3"])
+
 
 
 def test_init(product_1):
@@ -29,9 +30,8 @@ def test_init(product_1):
 
 def test_init_category(category_1):
     assert category_1.name == "Смартфоны"
-    assert category_1.description == ("Смартфоны, как средство \
-    не только коммуникации,но \
-    и получения дополнительных функций для удобства жизни")
+    assert category_1.description == ("Смартфоны, как средство не только коммуникации,\
+        но и получения дополнительных функций для удобства жизни")
     assert category_1.products == ["product1", "product2", "product3"]
     assert len(category_1.products) == 3
     assert category_1.category_count == 1
