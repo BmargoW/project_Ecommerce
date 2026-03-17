@@ -19,7 +19,7 @@ class Product:
         if new_price > 0:
             self.__price = new_price
         elif new_price <= 0:
-            self.__price = "Цена не должан быть нулевая или отрицательная"
+            print ("Цена не должан быть нулевая или отрицательная")
 
     @classmethod
     def new_product(cls, my_dict):
@@ -53,7 +53,7 @@ class Category:
     def products(self):
         products = ""
         for i in self.__products:
-            products += f"{i.name}, {i.price} руб. {i.quantity} шт.\n"
+            products += f"{i.name}, {i.price} руб. Остаток: {i.quantity} шт.\n"
         return products
 
 
