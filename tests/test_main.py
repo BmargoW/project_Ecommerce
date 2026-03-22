@@ -17,13 +17,29 @@ def category_1(product_1):
 
 @pytest.fixture
 def smartphone_1():
-    return Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14, 90.3,
-                      "Note 11", 1024, "Синий")
+    return Smartphone(
+        "Xiaomi Redmi Note 11",
+        "1024GB, Синий",
+        31000.0,
+        14,
+        90.3,
+        "Note 11",
+        1024,
+        "Синий",
+    )
+
 
 @pytest.fixture
 def grass_1():
-    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20,
-                     "Россия", "7 дней", "Зеленый")
+    return LawnGrass(
+        "Газонная трава",
+        "Элитная трава для газона",
+        500.0,
+        20,
+        "Россия",
+        "7 дней",
+        "Зеленый",
+    )
 
 
 def test_init(product_1):
@@ -32,11 +48,13 @@ def test_init(product_1):
     assert product_1.quantity == 5
     assert product_1.price == 180000.0
 
+
 def test_init_smartphone(smartphone_1):
     assert smartphone_1.efficiency == 90.3
     assert smartphone_1.model == "Note 11"
     assert smartphone_1.memory == 1024
     assert smartphone_1.color == "Синий"
+
 
 def test_init_lawngrass(grass_1):
     assert grass_1.country == "Россия"
@@ -52,9 +70,10 @@ def test_add_product(product_1):
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     assert (product_1 + product2) == 2580000.0
 
+
 def test_negative_add_product(smartphone_1, grass_1):
     with pytest.raises(TypeError):
-        sum_3 = smartphone_1 + grass_1
+        smartphone_1 + grass_1
 
 
 def test_init_category(category_1):
@@ -90,6 +109,7 @@ def test_category_add_product(category_1):
     )
     with pytest.raises(TypeError):
         category_1.add_product("Not a product")
+
 
 def test_product_price_property(product_1):
     assert product_1.price == 180000.0
