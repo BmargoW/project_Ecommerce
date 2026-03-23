@@ -14,7 +14,7 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(other, self.__class__):
+        if issubclass(type(other), self.__class__):
             full_price = (self.__price * self.quantity) + (
                 other.__price * other.quantity
             )
