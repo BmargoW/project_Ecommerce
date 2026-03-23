@@ -1,5 +1,5 @@
 import pytest
-from src.main import Product, Category, Smartphone, LawnGrass
+from src.main import Product, Category, Smartphone, LawnGrass, PrintMixin
 
 
 @pytest.fixture
@@ -7,7 +7,6 @@ def product_1():
     return Product(
         "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
     )
-
 
 @pytest.fixture
 def category_1(product_1):
@@ -42,6 +41,7 @@ def grass_1():
     )
 
 
+
 def test_init(product_1):
     assert product_1.name == "Samsung Galaxy S23 Ultra"
     assert product_1.description == "256GB, Серый цвет, 200MP камера"
@@ -54,6 +54,7 @@ def test_init_smartphone(smartphone_1):
     assert smartphone_1.model == "Note 11"
     assert smartphone_1.memory == 1024
     assert smartphone_1.color == "Синий"
+
 
 
 def test_init_lawngrass(grass_1):
