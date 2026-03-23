@@ -1,4 +1,23 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def scope_of_application(self):
+        super().__init__()
+        pass
+
+
+class PrintMixin:
+    def __init__(self):
+        print(repr(self))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.price}, {self.quantity})"
+
+
+class Product(BaseProduct, PrintMixin):
     name: str
     description: str
     price: float
@@ -9,6 +28,10 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
+
+    def scope_of_application(self):
+        return print("Купля-продажа")
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -51,6 +74,9 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+    def scope_of_application(self):
+        return print("Электроника")
+
 
 class LawnGrass(Product):
     def __init__(
@@ -60,6 +86,9 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
+    def scope_of_application(self):
+        return print("Сельское и частное хозяйство")
 
 
 class Category:
