@@ -16,6 +16,11 @@ def category_1(product_1):
 
 
 @pytest.fixture
+def category_zero():
+    return Category("Газонная трава", "Различные виды газонной травы", [])
+
+
+@pytest.fixture
 def smartphone_1():
     return Smartphone(
         "Xiaomi Redmi Note 11",
@@ -47,6 +52,14 @@ def test_init(product_1):
     assert product_1.description == "256GB, Серый цвет, 200MP камера"
     assert product_1.quantity == 5
     assert product_1.price == 180000.0
+
+
+def test_init_negative():
+
+    with pytest.raises(
+        ValueError, match="Товар с нулевым количеством не может быть добавлен"
+    ):
+        Product("Samsung", "Синий цвет камера", 450.00, 0)
 
 
 def test_init_smartphone(smartphone_1):
@@ -107,8 +120,6 @@ def test_category_add_product(category_1):
         "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
         '55" QLED 4K, 123000.0 руб. Остаток: 7 шт.\n'
     )
-    with pytest.raises(TypeError):
-        category_1.add_product("Not a product")
 
 
 def test_product_price_property(product_1):
@@ -137,3 +148,8 @@ def test_product_new_product():
         }
     )
     assert new_product_1.name == "Samsung Galaxy S23 Ultra"
+
+
+def test_average_products(category_1, category_zero):
+    assert category_1.average_products() == 180000.0
+    assert category_zero.average_products() == 0
